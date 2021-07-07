@@ -1,15 +1,30 @@
 package entity;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "conductor")
 public class Conductor {
 
+    @Id
+    @JoinColumn(name = "Nombre")
     private String nombre;
+    @JoinColumn(name = "No_veces_ganado")
     private int noVecesGanado;
-    private String noPlaca;
+    @JoinColumn(name = "Placa_Carro", unique = true)
+    @OneToOne(optional = false, fetch = FetchType.EAGER)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Carro carro;
 
-    public Conductor(String nombre, int noVecesGanado, String noPlaca) {
+    public Conductor(String nombre, int noVecesGanado) {
         this.nombre = nombre;
         this.noVecesGanado = noVecesGanado;
-        this.noPlaca = noPlaca;
+    }
+
+    public Conductor() {
     }
 
     public String getNombre() {
@@ -28,11 +43,5 @@ public class Conductor {
         this.noVecesGanado = noVecesGanado;
     }
 
-    public String getNoPlaca() {
-        return noPlaca;
-    }
 
-    public void setNoPlaca(String noPlaca) {
-        this.noPlaca = noPlaca;
-    }
 }

@@ -1,14 +1,30 @@
 package entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "pista")
 public class Pista {
+
+    @Id
+    @JoinColumn(name = "Id")
     private String id;
+    @JoinColumn(name = "Nombre")
     private String nombre;
+    @JoinColumn(name = "Tamano_pista")
     private int tamanio;
 
     public Pista(String id, String nombre, int tamanio) {
         this.id = id;
         this.nombre = nombre;
         this.tamanio = tamanio;
+    }
+
+    public Pista() {
+
     }
 
     public String getId() {

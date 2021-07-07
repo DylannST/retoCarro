@@ -1,16 +1,31 @@
 package entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "carro")
 public class Carro {
+
+    @Id
+    @JoinColumn(name = "Placa")
     private String placa;
+    @JoinColumn(name = "Descripcion")
     private String descripcion;
+    @JoinColumn(name = "Avance")
     private int Avance;
+    @JoinColumn(name = "Posicion")
     private int posicion;
 
     public Carro(String placa, int avance, int posicion) {
         this.placa = placa;
         Avance = avance;
         this.posicion = posicion;
+    }
+
+    public Carro() {
     }
 
     public String getPlaca() {
