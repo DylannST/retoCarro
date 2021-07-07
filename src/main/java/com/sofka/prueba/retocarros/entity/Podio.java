@@ -1,6 +1,7 @@
-package entity;
+package com.sofka.prueba.retocarros.entity;
 
 
+import com.sofka.prueba.retocarros.util.JuegoJugador;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -8,27 +9,22 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "podio")
+@IdClass(JuegoJugador.class)
 public class Podio {
 
     @Id
-    @JoinColumn(name = "codigo_Podio")
+    @Column(name = "codigo_Podio")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigoPodio;
-    @JoinColumn(name = "Puesto")
+    @Column(name = "puesto")
     private String puesto;
-    @JoinColumn(name = "Nombre_Jugador")
-    private String nombre;
 
     @Id
-    @JoinColumn(name = "Nombre_Jugador")
+    @JoinColumn(name = "nombre_Jugador")
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Conductor conductor;
 
-    public Podio(String puesto, String nombre) {
-        this.puesto = puesto;
-        this.nombre = nombre;
-    }
 
     public Podio() {
 
@@ -42,11 +38,5 @@ public class Podio {
         this.puesto = puesto;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 }

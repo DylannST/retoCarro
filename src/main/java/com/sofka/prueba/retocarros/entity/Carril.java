@@ -1,4 +1,4 @@
-package entity;
+package com.sofka.prueba.retocarros.entity;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -10,28 +10,27 @@ import javax.persistence.*;
 public class Carril {
 
     @Id
-    @JoinColumn(name = "Numero_Carril")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String numeroCarril;
+    @Column(name = "numero_Carril")
+    private Long numeroCarril;
 
-    @JoinColumn(name = "Numero_pista")
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "numero_pista", nullable = false)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Pista pista;
 
-    @JoinColumn(name = "Placa_Carro", unique = true)
-    @OneToOne(optional = false, fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "placa_carro")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Carro carro;
 
     public Carril() {
     }
 
-    public String getNumeroCarril() {
+    public Long getNumeroCarril() {
         return numeroCarril;
     }
 
-    public void setNumeroCarril(String numeroCarril) {
+    public void setNumeroCarril(Long numeroCarril) {
         this.numeroCarril = numeroCarril;
     }
 

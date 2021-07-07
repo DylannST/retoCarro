@@ -1,4 +1,4 @@
-package entity;
+package com.sofka.prueba.retocarros.entity;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -10,19 +10,16 @@ import javax.persistence.*;
 public class Conductor {
 
     @Id
-    @JoinColumn(name = "Nombre")
+    @Column(name = "nombre", length = 12)
     private String nombre;
-    @JoinColumn(name = "No_veces_ganado")
+    @Column(name = "no_veces_ganado")
     private int noVecesGanado;
-    @JoinColumn(name = "Placa_Carro", unique = true)
-    @OneToOne(optional = false, fetch = FetchType.EAGER)
+
+    @JoinColumn(name = "placa_Carro", unique = true)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Carro carro;
 
-    public Conductor(String nombre, int noVecesGanado) {
-        this.nombre = nombre;
-        this.noVecesGanado = noVecesGanado;
-    }
 
     public Conductor() {
     }

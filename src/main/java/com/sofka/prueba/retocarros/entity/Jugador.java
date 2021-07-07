@@ -1,8 +1,10 @@
-package entity;
+package com.sofka.prueba.retocarros.entity;
 
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -10,18 +12,15 @@ import java.util.Set;
 public class Jugador {
 
     @Id
-    @JoinColumn(name = "Nombre")
+    @Column(name = "nombre", length = 12)
     private String nombre;
-    @JoinColumn(name = "Turno")
+    @Column(name = "turno")
     private String turno;
 
-    public Jugador(String nombre, String turno) {
-        this.nombre = nombre;
-        this.turno = turno;
-    }
 
-    @ManyToMany(mappedBy = "jugadores", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Juego> juego = new HashSet<>();
+    @ManyToMany(mappedBy = "jugadores")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Set<Juego> juego;
 
     public Jugador() {
     }

@@ -1,44 +1,42 @@
-package entity;
+package com.sofka.prueba.retocarros.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "juego")
 public class Juego {
     @Id
-    @JoinColumn(name = "Numero_juego")
+    @Column(name = "numero_juego")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String numeroJuego;
+    private Long numeroJuego;
 
-    @JoinColumn(name = "Id_Pista")
+    @JoinColumn(name = "id_Pista")
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Pista pista;
 
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "juego_jugador",
-            joinColumns = {@JoinColumn(name = "Id_juego")},
-            inverseJoinColumns = {@JoinColumn(name = "Id_jugador")}
+            joinColumns = @JoinColumn(name = "id_juego"),
+            inverseJoinColumns = @JoinColumn(name = "id_jugador")
     )
-    @JsonIgnore
-    private Set<Juego> jugadores = new HashSet<>();
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Set<Jugador> jugadores;
 
     public Juego() {
     }
 
-    public String getNumeroJuego() {
+    public Long getNumeroJuego() {
         return numeroJuego;
     }
 
-    public void setNumeroJuego(String numeroJuego) {
+    public void setNumeroJuego(Long numeroJuego) {
         this.numeroJuego = numeroJuego;
     }
 
@@ -50,11 +48,11 @@ public class Juego {
         this.pista = pista;
     }
 
-    public Set<Juego> getJugadores() {
+    public Set<Jugador> getJugadores() {
         return jugadores;
     }
 
-    public void setJugadores(Set<Juego> jugadores) {
+    public void setJugadores(Set<Jugador> jugadores) {
         this.jugadores = jugadores;
     }
 }
