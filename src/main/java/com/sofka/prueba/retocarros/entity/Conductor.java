@@ -15,8 +15,8 @@ public class Conductor {
     @Column(name = "no_veces_ganado")
     private int noVecesGanado;
 
-    @JoinColumn(name = "placa_Carro", unique = true)
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "placa_carro",unique = true, nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Carro carro;
 
@@ -40,5 +40,11 @@ public class Conductor {
         this.noVecesGanado = noVecesGanado;
     }
 
+    public Carro getCarro() {
+        return carro;
+    }
 
+    public void setCarro(Carro carro) {
+        this.carro = carro;
+    }
 }

@@ -15,7 +15,7 @@ public class Jugador {
     @Column(name = "nombre", length = 12)
     private String nombre;
     @Column(name = "turno")
-    private String turno;
+    private Long turno;
 
 
     @ManyToMany(mappedBy = "jugadores")
@@ -33,11 +33,11 @@ public class Jugador {
         this.nombre = nombre;
     }
 
-    public String getTurno() {
+    public Long getTurno() {
         return turno;
     }
 
-    public void setTurno(String turno) {
+    public void setTurno(Long turno) {
         this.turno = turno;
     }
 

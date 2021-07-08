@@ -11,6 +11,7 @@ public class Carril {
 
     @Id
     @Column(name = "numero_Carril")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long numeroCarril;
 
     @JoinColumn(name = "numero_pista", nullable = false)
@@ -19,7 +20,7 @@ public class Carril {
     private Pista pista;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "placa_carro")
+    @JoinColumn(name = "placa_carro",unique = true, nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Carro carro;
 

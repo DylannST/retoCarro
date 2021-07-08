@@ -1,8 +1,5 @@
 package com.sofka.prueba.retocarros.entity;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 import javax.persistence.*;
 import java.util.Set;
 
@@ -20,11 +17,15 @@ public class Pista {
 
 
     @OneToMany(mappedBy = "pista", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-    @OnDelete(action = OnDeleteAction.CASCADE)
     private Set<Carril> carriles;
 
     public Pista() {
 
+    }
+
+    public Pista(String nombre, Long tamanio) {
+        this.nombre = nombre;
+        this.tamanio = tamanio;
     }
 
     public String getId() {

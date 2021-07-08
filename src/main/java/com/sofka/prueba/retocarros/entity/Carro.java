@@ -1,5 +1,6 @@
 package com.sofka.prueba.retocarros.entity;
 
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -10,12 +11,14 @@ import javax.persistence.*;
 public class Carro {
 
     @Id
+//    @GenericGenerator(name = "placa", strategy = "com.sofka.prueba.retocarros.util.GeneradorPlaca")
+//    @GeneratedValue(generator = "placa")
     @Column(name = "placa", length = 6)
     private String placa;
     @Column(name = "descripcion")
     private String descripcion;
     @Column(name = "avance")
-    private Long Avance;
+    private Long avance;
     @Column(name = "posicion")
     private Long posicion;
 
@@ -44,11 +47,11 @@ public class Carro {
     }
 
     public Long getAvance() {
-        return Avance;
+        return avance;
     }
 
     public void setAvance(Long avance) {
-        Avance = avance;
+        this.avance = avance;
     }
 
     public Long getPosicion() {
