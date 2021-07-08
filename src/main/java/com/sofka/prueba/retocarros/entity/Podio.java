@@ -14,14 +14,14 @@ public class Podio {
 
     @Id
     @Column(name = "codigo_Podio")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int codigoPodio;
     @Column(name = "puesto")
-    private String puesto;
+    private int puesto;
 
     @Id
-    @JoinColumn(name = "nombre_Jugador")
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "nombre_Jugador", unique = true, nullable = false)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Conductor conductor;
 
@@ -30,13 +30,24 @@ public class Podio {
 
     }
 
-    public String getPuesto() {
+    public int getPuesto() {
         return puesto;
     }
 
-    public void setPuesto(String puesto) {
+    public void setPuesto(int puesto) {
         this.puesto = puesto;
     }
 
+    public int getCodigoPodio() {
+        return codigoPodio;
+    }
 
+
+    public Conductor getConductor() {
+        return conductor;
+    }
+
+    public void setConductor(Conductor conductor) {
+        this.conductor = conductor;
+    }
 }

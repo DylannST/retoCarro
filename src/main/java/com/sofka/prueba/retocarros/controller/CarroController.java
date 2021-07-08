@@ -4,9 +4,9 @@ package com.sofka.prueba.retocarros.controller;
 import com.sofka.prueba.retocarros.entity.Carro;
 import com.sofka.prueba.retocarros.service.CarroService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class CarroController {
@@ -19,4 +19,13 @@ public class CarroController {
         return carroService.agregarCarro(carro);
     }
 
+    @PutMapping("api/carro/{avance}/{nombre}")
+    public List<Carro> actualizarAvance(@PathVariable("avance") Long avance, @PathVariable("nombre") String nombre) {
+        return carroService.actualizarAvance(avance, nombre);
+    }
+
+    @PutMapping("api/carros")
+    public List<Carro> actualizarPosiciones(@RequestBody List<Carro> carros) {
+        return carroService.actualizarPosiciones(carros);
+    }
 }

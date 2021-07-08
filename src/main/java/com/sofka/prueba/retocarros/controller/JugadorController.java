@@ -5,6 +5,8 @@ import com.sofka.prueba.retocarros.service.JugadorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin(origins = "*")
 public class JugadorController {
@@ -20,5 +22,10 @@ public class JugadorController {
     @PostMapping("api/jugador")
     public Jugador registrar(@RequestBody Jugador jugador) {
         return jugadorService.registrarJugador(jugador);
+    }
+
+    @GetMapping("api/jugadores")
+    public List<Jugador> obtenerListaJugador() {
+        return jugadorService.obtenerListaJugador();
     }
 }

@@ -11,8 +11,8 @@ import javax.persistence.*;
 public class Carro {
 
     @Id
-//    @GenericGenerator(name = "placa", strategy = "com.sofka.prueba.retocarros.util.GeneradorPlaca")
-//    @GeneratedValue(generator = "placa")
+    @GenericGenerator(name = "placa", strategy = "com.sofka.prueba.retocarros.util.GeneradorPlaca")
+    @GeneratedValue(generator = "placa")
     @Column(name = "placa", length = 6)
     private String placa;
     @Column(name = "descripcion")

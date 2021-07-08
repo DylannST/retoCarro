@@ -15,12 +15,12 @@ public class Carril {
     private Long numeroCarril;
 
     @JoinColumn(name = "numero_pista", nullable = false)
-    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Pista pista;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "placa_carro",unique = true, nullable = false)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "placa_carro", unique = true, nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Carro carro;
 
