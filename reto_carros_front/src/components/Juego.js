@@ -11,6 +11,7 @@ const carga = (e) => {
   e.preventDefault();
 };
 export default function Juego({ juego }) {
+ 
   const [tabla, setTabla] = useState([]);
   const [dado, setDado] = useState(0);
   const [pista, setPista] = useState(null);
@@ -53,7 +54,6 @@ export default function Juego({ juego }) {
         `carro/${parseInt(resultadoDado)}/${jugadorActual[0].nombre}`
       );
       var resultado = await consultarTabla(`carros/${juego.numeroJuego}`);
-      
 
       resultado = resultado.sort(function (a, b) {
         return b.avance - a.avance;
