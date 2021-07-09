@@ -5,6 +5,8 @@ import com.sofka.prueba.retocarros.repository.PistaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import static com.sofka.prueba.retocarros.util.GeneradorRamdon.palabraAleatoria;
+
 @Service
 public class PistaService {
 
@@ -14,6 +16,9 @@ public class PistaService {
 
 
     public Pista agregarPista(Pista pista) {
+        pista.setNombre(palabraAleatoria(3));
         return pistaRepository.save(pista);
     }
+
+
 }

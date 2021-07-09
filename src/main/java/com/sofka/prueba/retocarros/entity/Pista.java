@@ -1,5 +1,7 @@
 package com.sofka.prueba.retocarros.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -8,6 +10,8 @@ import java.util.Set;
 public class Pista {
 
     @Id
+    @GenericGenerator(name = "id", strategy = "com.sofka.prueba.retocarros.util.GenerarNombre")
+    @GeneratedValue(generator = "id")
     @Column(name = "id", length = 5)
     private String id;
     @Column(name = "nombre")

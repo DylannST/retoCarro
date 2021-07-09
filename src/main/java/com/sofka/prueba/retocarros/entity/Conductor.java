@@ -15,7 +15,7 @@ public class Conductor {
     @Column(name = "no_veces_ganado")
     private int noVecesGanado;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "placa_carro",unique = true, nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Carro carro;

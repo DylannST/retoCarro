@@ -6,6 +6,8 @@ import com.sofka.prueba.retocarros.repository.ConductorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class ConductorService {
 
@@ -13,7 +15,11 @@ public class ConductorService {
     ConductorRepository conductorRepository;
 
     public Conductor obtenerConductor(String nombre) {
-        return conductorRepository.findById(nombre).orElseThrow();
+        Optional<Conductor> optCondu =  conductorRepository.findById(nombre);
+        if(optCondu.isPresent()){
+            return optCondu.get();
+        }
+            return null;
     }
 
     public Conductor crearConductor(Conductor conductor) {

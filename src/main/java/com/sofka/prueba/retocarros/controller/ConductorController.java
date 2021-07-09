@@ -5,6 +5,7 @@ import com.sofka.prueba.retocarros.service.ConductorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.PUT,RequestMethod.POST})
 @RestController
 public class ConductorController {
 
