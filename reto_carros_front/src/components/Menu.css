@@ -1,61 +1,62 @@
-
-.container{
-    margin-top: 100px;
-    display: flex;
-    flex-direction: column;
-    border-color: black;
-    padding: 5em;
-    background-color: #e9edf0;
-
+.container {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  border-color: black;
+  padding: 5em;
+  background-color: #e9edf0;
 }
 
-.buttons{
-    padding: 5px;
-    margin: 20px;
+.buttons {
+  padding: 5px;
+  margin: 20px;
 }
 
-h1{
-    font-size: 40px;
-    margin-bottom: 10px;
+h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
 }
 
-.inputSize{
-    width: 500px;
+.inputSize {
+  width: 500px;
 }
 
-.container1{
-    margin-top: 100px;
-    border-color: black;
-    padding: 5em;
-    background-color: #e9edf0;
-
+.container1 {
+  margin-top: 100px;
+  border-color: black;
+  padding: 5em;
+  background-color: #e9edf0;
 }
 
-.pGanadas{
-    font-size: 50px;
+.pGanadas {
+  font-size: 50px;
 }
 
-.buttonMargin{
-    margin: 10px;
-    position: relative;
-    bottom: 10px;
+.buttonMargin {
+  margin: 10px;
+  position: relative;
+  bottom: 10px;
 }
 
-.buttonVolver{
-    margin-left: 600px;
+.buttonVolver {
+  margin-left: 600px;
 }
 
-.pJuego{
-    margin-left: 600px;
-    font-weight: bold;
+.pJuego {
+  margin-left: 600px;
+  font-weight: bold;
 }
 
-.pMeta{
-    margin-top: 40px;
-    margin-left: 190px;
-    font-weight: bold;
+.pMeta {
+  margin-top: 40px;
+  margin-left: 190px;
+  font-weight: bold;
 }
 
-.tableM{
-    margin-bottom: 50px;
+.tableM {
+  margin-bottom: 50px;
+}
+
+.buttonRegisPodio {
+  margin-left: 600px;
 }

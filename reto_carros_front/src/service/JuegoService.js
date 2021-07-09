@@ -52,3 +52,41 @@ export const consultarTabla = async (url) => {
     return null;
   }
 };
+
+export const consultar = async (url) => {
+  try {
+    const result = await fetch(urlBase + url, {
+      method: "GET",
+      headers: { "Content-type": "application/json" },
+    });
+    return await result.json();
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+export const actualizarAvance = async (url) => {
+  try {
+    const result = await fetch(urlBase + url, {
+      method: "PUT",
+      headers: { "Content-type": "application/json" },
+    });
+    return await result.json();
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+export const actualizarPosicion = async (body, url) => {
+  try {
+    const result = await fetch(urlBase + url, {
+      method: "PUT",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    return await result.json();
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};

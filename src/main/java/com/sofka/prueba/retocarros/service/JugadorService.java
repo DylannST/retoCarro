@@ -5,6 +5,7 @@ import com.sofka.prueba.retocarros.repository.JugadorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -20,6 +21,17 @@ public class JugadorService {
 
     public Jugador registrarJugador(Jugador jugador) {
         return jugadorRepository.save(jugador);
+    }
+
+    public List<Jugador> obtenerListaJugadorPorJuego(Long juego) {
+        List<Jugador> jugador = new ArrayList<>();
+        List<Object[]> listJugador = (List<Object[]>) jugadorRepository.obtenerJugadoresPorJuego(juego);
+
+        for (Object[] dato : listJugador) {
+            jugador.add(new Jugador(dato[0].toString(), Long.parseLong(dato[1].toString())));
+            System.out.println(dato);
+        }
+        return jugador;
     }
 
     public List<Jugador> obtenerListaJugador() {

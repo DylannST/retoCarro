@@ -19,9 +19,9 @@ export default function Consulta() {
     setNombre(event.target.value);
   };
 
-const volver = ()=>{
-    window.location ="/"
-}
+  const volver = () => {
+    window.location = "/";
+  };
 
   return (
     <div className="container ">
@@ -40,17 +40,20 @@ const volver = ()=>{
             consultar
           </button>
         </div>
-        {resultado!==null && (
-            <div className="col-md-4">
+        {resultado !== null && (
+          <div className="col-md-4">
             <label className="form-label">Numero de veces ganado</label>
             <p className="pGanadas">{resultado.noVecesGanado}</p>
           </div>
-  
         )}
-  <div className="col-12">
-            <button className="btn btn-danger buttonVolver" onClick={()=>volver()}>Volver</button>
-          </div>
-        
+        <div className="col-12">
+          <button
+            className="btn btn-danger buttonVolver"
+            onClick={() => volver()}
+          >
+            Volver
+          </button>
+        </div>
       </form>
     </div>
   );

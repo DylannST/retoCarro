@@ -25,6 +25,11 @@ public class Jugador {
     public Jugador() {
     }
 
+    public Jugador(String nombre, Long turno) {
+        this.nombre = nombre;
+        this.turno = turno;
+    }
+
     public String getNombre() {
         return nombre;
     }

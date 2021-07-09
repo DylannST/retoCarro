@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.PUT,RequestMethod.POST})
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.PUT, RequestMethod.POST})
 @RestController
 public class JugadorController {
 
@@ -24,8 +24,8 @@ public class JugadorController {
         return jugadorService.registrarJugador(jugador);
     }
 
-    @GetMapping("api/jugadores")
-    public List<Jugador> obtenerListaJugador() {
-        return jugadorService.obtenerListaJugador();
+    @GetMapping("api/jugadores/{juego}")
+    public List<Jugador> obtenerListaJugador(@PathVariable("juego") Long juego) {
+        return jugadorService.obtenerListaJugadorPorJuego(juego);
     }
 }

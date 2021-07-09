@@ -19,7 +19,6 @@ export default function Registro() {
 
   const [nombre, setNombre] = useState("");
   const [acum, setAcum] = useState(1);
-  const [resultado, setResultado] = useState(null);
   const [pista, setPista] = useState(null);
   const [juego, setJuego] = useState(null);
   const [MenuJuego, setMenuJuego] = useState(0);
@@ -34,7 +33,6 @@ export default function Registro() {
   const registrar = async () => {
     if (nombre !== "") {
       if (pista == null) {
-        console.log("hola como estas", pista);
         crearPista();
       }
       crearJugador();
@@ -52,23 +50,22 @@ export default function Registro() {
       nombre: nombre,
       noVecesGanado: 0,
       carro: {
-        descripcion: listaColores[getRandomArbitrary(0, 5)],
+        descripcion: listaColores[parseInt(getRandomArbitrary(0, 5))],
         avance: 0,
         posicion: acum,
       },
-    };
-
-    if (listaJugadores.filter((resp) => resp.nombre == nombre).length > 0) {
+    };  
+    setAcum(acum + 1);
+    if (listaJugadores.filter((resp) => resp.nombre === nombre).length > 0) {
       alert("Nombre repetido");
     } else {
       setListaJugadores([...listaJugadores, jugador]);
-      console.log("jugadores listga", listaJugadores);
 
       const resultado2 = await registrarService(conductor, "conductor");
       setListaConductores([...ListaConductores, resultado2]);
     }
 
-    setAcum(acum + 1);
+  
   }
 
   async function crearPista() {
@@ -80,13 +77,11 @@ export default function Registro() {
     const resultado = await registrarService(pista, "pista");
 
     if (resultado !== null) {
-      console.log("PISTA", resultado);
       setPista(resultado);
     }
   }
 
   async function crearJuego() {
-    console.log("hola estoy aqui");
     const juego = {
       pista: pista,
       jugadores: listaJugadores,
@@ -101,19 +96,15 @@ export default function Registro() {
           placa: ListaConductores[i].carro.placa,
         },
       };
-      const resultadoConductor = await registrarService(carril, "carril");
-      console.log("carrillllllll", resultadoConductor);
+      await registrarService(carril, "carril");
     }
 
     const resultado = await registrarService(juego, "juego");
 
-    console.log("juego", resultado);
     if (resultado !== null) {
       setJuego(resultado);
       setMenuJuego(1);
     }
-
-    const resultado2 = await registrarService();
   }
 
   const cambiarEstadoNombre = (event) => {
@@ -152,8 +143,8 @@ export default function Registro() {
               </thead>
 
               <tbody>
-                {listaJugadores.map((jug) => (
-                  <tr key={jug.turno}>
+                {listaJugadores.map((jug, index) => (
+                  <tr key={index}>
                     <td>{jug.nombre}</td>
                     <td>{jug.turno} </td>
                   </tr>
@@ -172,7 +163,7 @@ export default function Registro() {
           </div>
         </form>
       ) : (
-        <Juego />
+        <Juego juego={juego} />
       )}
     </div>
   );

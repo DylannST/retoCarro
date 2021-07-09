@@ -18,4 +18,8 @@ public class PistaController {
         return pistaService.agregarPista(pista);
     }
 
+    @GetMapping("api/pista/{id}")
+    public Pista consultarPista(@PathVariable("id") String id){
+        return pistaService.consultarPista(id);
+    }
 }

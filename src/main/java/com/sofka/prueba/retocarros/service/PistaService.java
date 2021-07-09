@@ -21,4 +21,7 @@ public class PistaService {
     }
 
 
+    public Pista consultarPista(String id) {
+        return pistaRepository.findById(id).orElseThrow();
+    }
 }
