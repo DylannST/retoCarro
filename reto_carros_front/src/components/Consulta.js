@@ -12,7 +12,6 @@ export default function Consulta() {
       if (resultado !== null) {
         setResultado(resultado);
       }
-      console.log(resultado);
     }
   };
   const cambiarEstadoNombre = (event) => {

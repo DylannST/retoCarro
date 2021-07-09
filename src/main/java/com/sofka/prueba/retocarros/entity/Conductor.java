@@ -24,6 +24,11 @@ public class Conductor {
     public Conductor() {
     }
 
+    public Conductor(String nombre, int noVecesGanado) {
+        this.nombre = nombre;
+        this.noVecesGanado = noVecesGanado;
+    }
+
     public String getNombre() {
         return nombre;
     }

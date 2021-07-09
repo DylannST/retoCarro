@@ -15,14 +15,18 @@ public class ConductorService {
     ConductorRepository conductorRepository;
 
     public Conductor obtenerConductor(String nombre) {
-        Optional<Conductor> optCondu =  conductorRepository.findById(nombre);
-        if(optCondu.isPresent()){
-            return optCondu.get();
+        Optional<Conductor> optCondu = conductorRepository.findById(nombre);
+        if (optCondu.isPresent()) {
+            return new Conductor(optCondu.get().getNombre(), optCondu.get().getNoVecesGanado());
         }
-            return null;
+        return null;
     }
 
     public Conductor crearConductor(Conductor conductor) {
         return conductorRepository.save(conductor);
+    }
+
+    public void actualizarNoVecesGanado(String nombre) {
+        conductorRepository.actualizarNoVecesGanado(nombre);
     }
 }

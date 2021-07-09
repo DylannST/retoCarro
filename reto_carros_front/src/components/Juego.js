@@ -26,7 +26,6 @@ export default function Juego({ juego }) {
     setAcum(1);
     setTabla(resultado);
     setPista(juego.pista);
-    console.log("jeugo jugadores", juego.jugadores);
     setJugadores(juego.jugadores);
 
     const jugadorActual = juego.jugadores.filter((ju) => {
@@ -50,12 +49,11 @@ export default function Juego({ juego }) {
       setJugadorAc(
         jugadorActual.length > 0 ? jugadorActual[0] : { nombre: "" }
       );
-      console.log("jugadorActual", jugadorActual, "jugadores", jugadores);
       await actualizarAvance(
         `carro/${parseInt(resultadoDado)}/${jugadorActual[0].nombre}`
       );
       var resultado = await consultarTabla(`carros/${juego.numeroJuego}`);
-      console.log("resultado inicial", resultado);
+      
 
       resultado = resultado.sort(function (a, b) {
         return b.avance - a.avance;
@@ -73,6 +71,7 @@ export default function Juego({ juego }) {
 
       if (resultado[0].avance >= pista.tamanio * 1000) {
         setJuegoTerminado(true);
+
         var listPodio = [];
 
         if (resultado.length < 4) {
@@ -85,6 +84,7 @@ export default function Juego({ juego }) {
               },
             });
           });
+          await actualizarAvance(`conductor/${resultado[0].nombre}`);
         } else {
           await actualizarPosicion(
             [resultado[0], resultado[1], resultado[2]],
@@ -97,7 +97,7 @@ export default function Juego({ juego }) {
                 puesto: value.posicion,
                 conductor: {
                   nombre: value.nombre,
-                  carro: {}
+                  carro: {},
                 },
               });
             }
